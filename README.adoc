@@ -2,6 +2,7 @@
 MIURA Katsuyoshi <miura.katsuyoshi@gmail.com>
 v1.0, 2021-04-10
 :toc:
+:xrefstyle: short
 :imagesdir: Images
 :homepage: https://github.com/miura-katsuyoshi/LFSR
 
