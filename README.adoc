@@ -7,4 +7,52 @@ v1.0, 2021-04-10
 
 Parameterized LFSR (Linear Feedback Shfit Register) implementation in SystemVerilog.
 
-The repetition period is 2^{N-1}.
+Galois-style LFSR is implemented.  The number of shift registers (the number of stages) can be spefified by the parameter _WIDTH_.  
+The repetition period is 2^_WIDTH_^-1.
+
+The position of taps were determined with reference to the literature [1].
+
+An example (_WIDTH_=8) is shown in <<fig:LFSR8>>.
+
+[[fig:LFSR8]]
+.An 8-stage Galois LFSR with cycle size 255.
+image::LFSR8.svg[]
+
+== Input/Output
+
+[cols="1,1,1,2"]
+|===
+|name |Direction |width | Description
+
+|clk | input | 1 |Clock
+|n_rst | input | 1 |Reset (negative)
+|out |output |[WIDTH-1:0] |Shift-register outputs
+|===
+
+== Parameter
+
+[cols="1,1,1,2"]
+|===
+|Name |Type |width | Description
+
+|WIDTH | int | 32 |The number of shift registers
+|===
+
+== Instantiation
+
+    LFSR #(
+        .WIDTH(8)
+    )
+    LFSR_u0 (
+        .clk(clk_signal),
+        .n_rst(n_rst_signal),
+        .out(out_wire)
+    );
+
+== Test
+
+An testbench based on https://vunit.github.io/[VUnit] is included in this repository.  Only LFSRs with a width of less than 24 bits are tested because simulation takes long time.
+ 
+== References
+
+[1] Roy Ward and Tim Molteno, "Table of Linear Feedback Shift Registers" (2017): https://web.archive.org/web/20161007061934/http://courses.cse.tamu.edu/csce680/walker/lfsr_table.pdf
