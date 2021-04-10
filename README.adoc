@@ -52,7 +52,7 @@ image::LFSR8.svg[]
 
 == Test
 
-An testbench based on https://vunit.github.io/[VUnit] is included in this repository.  Only LFSRs with a width of less than 24 bits are tested because simulation takes long time.
+A testbench based on https://vunit.github.io/[VUnit] is included in this repository.  Only LFSRs with a width of less than 24 bits are tested because simulation takes long time.
  
 == References
 
